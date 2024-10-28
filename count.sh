@@ -8,4 +8,4 @@ for sub in *; do
     fi
 done
 
-printf "Total files * 5: %d\n" $((num_of_dirs * 5))
+printf "Total files * 5: %d" $((num_of_dirs * 5))
