@@ -1,11 +1,7 @@
 #!/bin/bash
 
-num_of_dirs=$(ls | wc -l )
+num_of_items=$(find . -type f -o -type d | wc -l)
 
-for sub in *; do
-    if [ -d "$sub" ]; then
-       num_of_dirs=$((num_of_dirs + 1))
-    fi
-done
+result=$((num_of_items * 5))
 
-printf "Total files * 5: %d" $((num_of_dirs * 5))
+printf "\t\vTotal files * 5: %d\v\n" "$result"
