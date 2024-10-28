@@ -1,3 +1,7 @@
 #!/bin/bash
 
-find . -type f \( -name 'a*' -o -name '*z' -o -name 'z*a' \)
+find . -name "a*"
+
+find . -name "*z"
+
+find . -name "z*a"
