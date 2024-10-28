@@ -1,4 +1,4 @@
 #!/bin/bash
 
-ls -ltF | tr '\n' ', ' | sed 's/.$//'
+ls -ltF | grep -vE '^..$' | tr '\n' ', ' | sed 's/.$//'
 
