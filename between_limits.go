@@ -2,7 +2,7 @@ package sprint
 
 func BetweenLimits(from, to rune) string {
 	acc := ""
-	for i := to + 1; i < from; i++ {
+	for i := from + 1; i < to; i++ {
 		acc += string(i)
 	}
 	return acc
