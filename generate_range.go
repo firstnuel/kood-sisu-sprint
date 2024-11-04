@@ -3,7 +3,7 @@ package sprint
 func GenerateRange(min, max int) []int {
 
 	if min > max {
-		return []int{}
+		return nil
 	}
 	rangeSlice := make([]int, 0)
 
