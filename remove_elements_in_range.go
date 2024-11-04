@@ -7,12 +7,14 @@ func RemoveElementsInRange(arr []float64, from, to int) []float64 {
 	}
 	if to > len(arr)-1 {
 		if from < 0 || from > len(arr) {
-			return nil
+			s := make([]float64, 0)
+			return s
 		}
 		return arr[:from]
 	}
 	if from < 0 || from > len(arr) {
-		return nil
+		s := make([]float64, 0)
+		return s
 	}
 	newArr := append(arr[:from], arr[to:]...)
 	return newArr
