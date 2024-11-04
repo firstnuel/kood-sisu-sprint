@@ -1,6 +1,11 @@
 package sprint
 
 func strToInt(s string) int {
+
+	if len(s) == 0 {
+		return 0
+	}
+
 	start, acc := 0, 0
 	IsNegative := false
 
