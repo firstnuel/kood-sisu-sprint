@@ -1,28 +1,36 @@
 package sprint
 
-func CapitalizeWords(s string) string {
-	result := []rune(s)
-	newWord := true
-
-	for i := 0; i < len(result); i++ {
-		if (result[i] >= 'a' && result[i] <= 'z') || (result[i] >= 'A' && result[i] <= 'Z') || (result[i] >= '0' && result[i] <= '9') {
-			if newWord {
-				if result[i] >= 'a' && result[i] <= 'z' {
-					// Capitalize the first letter of the word
-					result[i] -= 'a' - 'A'
-				}
-				newWord = false
-			} else {
-				// Convert remaining characters to lowercase if needed
-				if result[i] >= 'A' && result[i] <= 'Z' {
-					result[i] += 'a' - 'A'
-				}
-			}
+func ToCapitalCase(s string) string {
+	var result []rune
+	isFirstChar := true
+	for _, char := range s {
+		if isFirstChar && isAlphanumeric(char) {
+			result = append(result, toUpper(char))
+			isFirstChar = false
+		} else if char == ' ' {
+			result = append(result, char)
+			isFirstChar = true
 		} else {
-			// If the character is not alphanumeric, mark the start of a new word
-			newWord = true
+			result = append(result, toLower(char))
 		}
 	}
-
 	return string(result)
+}
+
+func isAlphanumeric(r rune) bool {
+	return ('a' <= r && r <= 'z') || ('A' <= r && r <= 'Z') || ('0' <= r && r <= '9')
+}
+
+func toUpper(r rune) rune {
+	if 'a' <= r && r <= 'z' {
+		return r - 'a' + 'A'
+	}
+	return r
+}
+
+func toLower(r rune) rune {
+	if 'A' <= r && r <= 'Z' {
+		return r - 'A' + 'a'
+	}
+	return r
 }
