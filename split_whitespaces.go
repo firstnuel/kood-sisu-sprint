@@ -13,5 +13,8 @@ func SplitWhitespaces(s string) []string {
 			start = i + 1
 		}
 	}
+	if start < len(s) {
+		newStr = append(newStr, s[start:])
+	}
 	return newStr
 }
