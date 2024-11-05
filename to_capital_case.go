@@ -1,32 +1,36 @@
 package sprint
 
+func titleCase(s string) string {
+	if len(s) == 0 {
+		return s
+	}
+	if s[0] >= 97 && s[0] <= 122 {
+		return string(s[0]-32) + s[1:]
+	}
+	return s
+}
+
 func ToCapitalCase(s string) string {
-	var result string
-	capitalizeNext := true
+	newStr := ""
+	n := 0
 
 	for i := 0; i < len(s); i++ {
-		ch := s[i]
-
-		if ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z' {
-			if capitalizeNext {
-				// Capitalize the first letter if it's lowercase
-				if ch >= 'a' && ch <= 'z' {
-					ch -= 'a' - 'A'
-				}
-				capitalizeNext = false
-			} else {
-				// Convert uppercase letters to lowercase for subsequent characters
-				if ch >= 'A' && ch <= 'Z' {
-					ch += 'a' - 'A'
-				}
+		// Check for space or hyphen to signal the end of a word
+		if s[i] == ' ' || s[i] == '-' {
+			if n < i {
+				word := s[n:i]
+				newStr += titleCase(word)
 			}
-		} else {
-			// Any non-alphabetic character resets the capitalization status for the next letter
-			capitalizeNext = true
+			// Append the non-letter separator (space or hyphen)
+			newStr += string(s[i])
+			n = i + 1 // Move start of next word to the character after the separator
 		}
-
-		result += string(ch)
+	}
+	// Handle the last word if there’s any remaining characters
+	if n < len(s) {
+		word := s[n:]
+		newStr += titleCase(word)
 	}
 
-	return result
+	return newStr
 }
