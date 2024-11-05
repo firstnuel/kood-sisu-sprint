@@ -7,7 +7,7 @@ func ToCapitalCase(s string) string {
 		if isFirstChar && isAlphanumeric(char) {
 			result = append(result, toUpper(char))
 			isFirstChar = false
-		} else if char == ' ' {
+		} else if !isAlphanumeric(char) {
 			result = append(result, char)
 			isFirstChar = true
 		} else {
