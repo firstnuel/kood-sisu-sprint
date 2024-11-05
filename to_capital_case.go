@@ -1,6 +1,9 @@
 package sprint
 
 func titleCase(s string) string {
+	if len(s) == 0 {
+		return s
+	}
 	if rune(s[0]) >= 97 && rune(s[0]) <= 122 {
 		return string(rune(s[0])-32) + s[1:]
 	}
