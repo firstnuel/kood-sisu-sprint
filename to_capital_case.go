@@ -1,36 +1,28 @@
 package sprint
 
-func titleCase(s string) string {
-	if len(s) == 0 {
-		return s
-	}
-	if s[0] >= 97 && s[0] <= 122 {
-		return string(s[0]-32) + s[1:]
-	}
-	return s
-}
+func CapitalizeWords(s string) string {
+	result := []rune(s)
+	newWord := true
 
-func ToCapitalCase(s string) string {
-	newStr := ""
-	n := 0
-
-	for i := 0; i < len(s); i++ {
-		// Check for space or hyphen to signal the end of a word
-		if s[i] == ' ' || s[i] == '-' {
-			if n < i {
-				word := s[n:i]
-				newStr += titleCase(word)
+	for i := 0; i < len(result); i++ {
+		if (result[i] >= 'a' && result[i] <= 'z') || (result[i] >= 'A' && result[i] <= 'Z') || (result[i] >= '0' && result[i] <= '9') {
+			if newWord {
+				if result[i] >= 'a' && result[i] <= 'z' {
+					// Capitalize the first letter of the word
+					result[i] -= 'a' - 'A'
+				}
+				newWord = false
+			} else {
+				// Convert remaining characters to lowercase if needed
+				if result[i] >= 'A' && result[i] <= 'Z' {
+					result[i] += 'a' - 'A'
+				}
 			}
-			// Append the non-letter separator (space or hyphen)
-			newStr += string(s[i])
-			n = i + 1 // Move start of next word to the character after the separator
+		} else {
+			// If the character is not alphanumeric, mark the start of a new word
+			newWord = true
 		}
 	}
-	// Handle the last word if there’s any remaining characters
-	if n < len(s) {
-		word := s[n:]
-		newStr += titleCase(word)
-	}
 
-	return newStr
+	return string(result)
 }
