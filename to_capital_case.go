@@ -9,19 +9,19 @@ func ToCapitalCase(s string) string {
 
 		if ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z' {
 			if capitalizeNext {
-				// Convert lowercase letter to uppercase if needed
+				// Convert lowercase to uppercase if needed for the first letter
 				if ch >= 'a' && ch <= 'z' {
 					ch -= 'a' - 'A'
 				}
 				capitalizeNext = false
 			} else {
-				// Convert uppercase letter to lowercase if needed
+				// Convert uppercase to lowercase for subsequent letters
 				if ch >= 'A' && ch <= 'Z' {
 					ch += 'a' - 'A'
 				}
 			}
 		} else {
-			// If not a letter, reset to capitalize the next letter
+			// Reset on non-letters, so next letter is capitalized
 			capitalizeNext = true
 		}
 
