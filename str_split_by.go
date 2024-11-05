@@ -11,7 +11,7 @@ func StrSplitBy(s, sep string) []string {
 			if start < end {
 				newStr = append(newStr, s[start:end])
 			}
-			start = i + 3
+			start = i + n
 		}
 
 	}
