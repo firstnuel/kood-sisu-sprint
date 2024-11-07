@@ -12,6 +12,6 @@ func PointText(p Point) Point {
 	return Point{
 		X:    p.X,
 		Y:    p.Y,
-		Text: fmt.Sprintf("Text at (%v, %v)", p.X, p.Y),
+		Text: fmt.Sprintf("Text at (%.7d, %.7v)", p.X, p.Y),
 	}
 }
