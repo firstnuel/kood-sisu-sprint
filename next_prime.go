@@ -12,6 +12,9 @@ func isPrime(n int) bool {
 }
 
 func NextPrime(n int) int {
+	if n < 1 {
+		return 2
+	}
 	for {
 		if isPrime(n) {
 			return n
