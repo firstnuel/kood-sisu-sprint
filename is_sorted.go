@@ -1,12 +1,12 @@
 package sprint
 
 func StrCompare(a, b string) int {
-	minLen := len(a) // defining a shorter string
+	minLen := len(a)
 	if len(b) < minLen {
-		minLen = len(b) // if other string is shorter - redifining a variable
+		minLen = len(b)
 	}
 
-	for i := 0; i < minLen; i++ { // going symbol by symbol
+	for i := 0; i < minLen; i++ {
 		if a[i] < b[i] {
 			return -1
 		} else if a[i] > b[i] {
@@ -14,28 +14,29 @@ func StrCompare(a, b string) int {
 		}
 	}
 
-	// if strings are equal till the end of the shortest - check their length
 	if len(a) < len(b) {
 		return -1
 	} else if len(a) > len(b) {
 		return 1
 	}
 
-	// strings are completely equal
 	return 0
 }
 
 func IsSorted(f func(a, b string) int, arr []string) bool {
+	if len(arr) < 2 {
+		return true
+	}
+
+	order := f(arr[0], arr[1])
 
 	for i := 0; i < len(arr)-1; i++ {
-		if f(arr[i], arr[i+1]) < 0 {
+		comparison := f(arr[i], arr[i+1])
+
+		if (order > 0 && comparison < 0) || (order < 0 && comparison > 0) {
 			return false
 		}
 	}
-	for i := len(arr); i <= 1; i-- {
-		if f(arr[i], arr[i-1]) < 0 {
-			return false
-		}
-	}
+
 	return true
 }
