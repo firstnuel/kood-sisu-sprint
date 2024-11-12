@@ -17,18 +17,13 @@ func StrCompare(a, b string) int {
 
 func AdvancedSortWordArr(a []string, f func(a, b string) int) []string {
 	n := len(a)
-	for {
-		switched := false
-		for i := 0; i < n-1; i++ {
-			if f(a[i], a[i+1]) > 0 {
-				a[i], a[i+1] = a[i+1], a[i]
-				switched = true
+	// Bubble sorting
+	for i := 0; i < n-1; i++ {
+		for j := 0; j < n-i-1; j++ {
+			if f(a[j], a[j+1]) > 0 {
+				a[j], a[j+1] = a[j+1], a[j]
 			}
 		}
-		if !switched {
-			break
-		}
-		n--
 	}
 	return a
 }
