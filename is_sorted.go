@@ -32,5 +32,10 @@ func IsSorted(f func(a, b string) int, arr []string) bool {
 			return false
 		}
 	}
+	for i := len(arr); i <= 1; i-- {
+		if f(arr[i], arr[i-1]) < 0 {
+			return false
+		}
+	}
 	return true
 }
