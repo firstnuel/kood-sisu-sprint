@@ -1,6 +1,9 @@
 package sprint
 
 func IsPrime(n int) bool {
+	if n <= 1 {
+		return false
+	}
 	num := n
 	for n > 2 {
 		if num%(n-1) == 0 {
