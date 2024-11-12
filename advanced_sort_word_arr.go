@@ -14,13 +14,10 @@ func StrCompare(a, b string) int {
 	}
 	return -1
 }
-
 func AdvancedSortWordArr(a []string, f func(a, b string) int) []string {
-	n := len(a)
-	// Bubble sorting
-	for i := 0; i < n-1; i++ {
-		for j := 0; j < n-i-1; j++ {
-			if f(a[j], a[j+1]) > 0 {
+	for i := 0; i < len(a)-1; i++ {
+		for j := 0; j < len(a)-i-1; j++ {
+			if a[j] > a[j+1] {
 				a[j], a[j+1] = a[j+1], a[j]
 			}
 		}
