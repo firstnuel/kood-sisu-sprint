@@ -20,7 +20,7 @@ func AdvancedSortWordArr(a []string, f func(a, b string) int) []string {
 	for {
 		switched := false
 		for i := 0; i < n-1; i++ {
-			if f(a[i], a[i+1]) < 1 {
+			if f(a[i], a[i+1]) > 0 {
 				a[i], a[i+1] = a[i+1], a[i]
 				switched = true
 			}
