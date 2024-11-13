@@ -14,7 +14,7 @@ func LongestClimb(arr []int) []int {
 
 	for _, v := range arr {
 		if !In(newArr, v) {
-			if v < newArr[0] {
+			if v < newArr[len(newArr)-1] {
 				newArr = append([]int{v}, newArr...)
 			} else {
 				newArr = append(newArr, v)
