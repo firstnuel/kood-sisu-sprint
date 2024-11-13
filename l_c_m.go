@@ -1,26 +1,19 @@
 package sprint
 
-func LCM(a, b int) int {
-	multA, multB := []int{}, []int{}
-
-	for i := 1; i <= 10; i++ {
-		multA = append(multA, i*a)
-		multB = append(multB, i*b)
+func gcd(a, b int) int {
+	n := a
+	if a < b {
+		n = b
 	}
 
-	for i := 0; i < len(multA); i++ {
-		if Find(multA, multB[i]) > 0 {
-			return multB[i]
+	for i := n; i > 1; i-- {
+		if a%i == 0 && b%i == 0 {
+			return i
 		}
 	}
-	return 0
+	return 1
 }
 
-func Find(arr []int, target int) int {
-	for _, v := range arr {
-		if v == target {
-			return target
-		}
-	}
-	return 0
+func LCM(a, b int) int {
+	return a * b / gcd(a, b)
 }
