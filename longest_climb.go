@@ -1,25 +1,24 @@
 package sprint
 
-func In(list []int, value int) bool {
-	for _, item := range list {
-		if item == value {
-			return true
-		}
-	}
-	return false
-}
-
 func LongestClimb(arr []int) []int {
-	newArr := []int{arr[0]}
+	start, count, lngstStart, lngstCount := 0, 0, 0, 0
 
-	for _, v := range arr {
-		if !In(newArr, v) {
-			if v < newArr[len(newArr)-1] {
-				newArr = append([]int{v}, newArr...)
-			} else {
-				newArr = append(newArr, v)
+	for i := 0; i < len(arr)-2; i++ {
+		if arr[i] < arr[i+1] {
+			count++
+			start = i
+			if count >= lngstCount {
+				lngstStart = start - (count - 1)
 			}
+		} else if arr[i] > arr[i+1] {
+			if count > lngstCount {
+				lngstCount = count
+			}
+			count = 0
 		}
 	}
-	return newArr
+	if lngstStart+lngstCount >= len(arr)-2 {
+		return arr[lngstStart:]
+	}
+	return arr[lngstStart : lngstStart+lngstCount+1]
 }
