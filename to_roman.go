@@ -6,6 +6,7 @@ func ToRoman(num int) string {
 		"I":  1,
 		"IV": 4,
 		"V":  5,
+		"IX": 9,
 		"X":  10,
 		"XL": 40,
 		"L":  50,
@@ -15,7 +16,7 @@ func ToRoman(num int) string {
 		"D":  500,
 		"M":  1000,
 	}
-	keys := []string{"I", "IV", "V", "X", "XL", "L", "XC", "C", "CD", "D", "M"}
+	keys := []string{"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "M"}
 
 	n := len(keys) - 1
 
