@@ -17,7 +17,9 @@ func Payout(amount int, denominations []int) (payout []int) {
 			break
 		}
 	}
-
+	if amount > 0 {
+		return []int{}
+	}
 	return payout
 }
 
