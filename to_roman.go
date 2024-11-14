@@ -14,9 +14,10 @@ func ToRoman(num int) string {
 		"C":  100,
 		"CD": 400,
 		"D":  500,
+		"CM": 900,
 		"M":  1000,
 	}
-	keys := []string{"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "M"}
+	keys := []string{"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"}
 
 	n := len(keys) - 1
 
