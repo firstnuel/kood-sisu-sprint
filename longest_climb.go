@@ -17,7 +17,7 @@ func LongestClimb(arr []int) []int {
 			count = 0
 		}
 	}
-	if lngstStart+lngstCount >= len(arr)-2 {
+	if lngstStart+lngstCount >= len(arr)-3 {
 		return arr[lngstStart:]
 	}
 	return arr[lngstStart : lngstStart+lngstCount+1]
