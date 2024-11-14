@@ -8,9 +8,11 @@ func LongestClimb(arr []int) []int {
 			count++
 			start = i
 			if count >= lngstCount {
-				lngstStart = start - (count - 1)
+				if start <= lngstStart {
+					lngstStart = start - (count - 1)
+				}
 			}
-		} else if arr[i] > arr[i+1] {
+		} else {
 			if count > lngstCount {
 				lngstCount = count
 			}
