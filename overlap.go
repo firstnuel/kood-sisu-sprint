@@ -1,6 +1,10 @@
 package sprint
 
 func Overlap(arr1, arr2 []int) []int {
+
+	if len(arr1) == 1 || len(arr2) == 1 {
+		return []int{}
+	}
 	// Create a map to store the counts of elements in arr1
 	counts := make(map[int]int)
 	for _, num := range arr1 {
